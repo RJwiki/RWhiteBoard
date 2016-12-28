@@ -1,6 +1,6 @@
 import { SET_BOARD, ADD_PARTICIPANT, REMOVE_PARTICIPANT, UPDATE_PARTICIPANT, ADD_TICKET, REMOVE_TICKET, UPDATE_TICKET } from '../actions/board'
-import store from '../common/store'
-import { PATH_BOARD, PATH_NOT_ASSIGN, PATH_RELEASED } from '../common/storePath'
+import store from '../firebase/store'
+import { PATH_BOARD, PATH_NOT_ASSIGN, PATH_RELEASED } from '../firebase/path'
 
 export const INITIAL_STATE = {
     notAssigned: {},
