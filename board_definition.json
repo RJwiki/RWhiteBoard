@@ -1,0 +1,79 @@
+{
+    "config":{
+        "type": 0, //0 - Ticket , 1 - Person (may support custom, in "config")
+        "rowFix": 0,  // Fixed row number, -1 (less than 0) not fixed
+        "columnFix": 0, // Fixed column number, -1 (less than 0) not fixed
+        "rowShowTitle": true,
+        "columnShowTitle": true,
+        "defaultContainer": "notAssigned" //Item will add to this container in default
+    },
+    "rows": {
+        "id_row1" : {
+            "name": "Alice",
+            "hours": 25
+            //, other properties
+        },
+        "id_row2" : {
+            "name": "Bob",
+            "hours": 5
+        }
+    },
+    "columns": {
+        "id_column1" : {
+            "name": "Open"
+            //, other properties
+        },
+        "id_column2" : {
+            "name": "In Progress"
+        }
+    },
+    "items":{
+        "id_item1": {
+            "type": 0, //0 - Ticket , 1 - Person (may support custom, in "config")
+            "name": "Ticket Name",
+            "ticketType": "Improvement", //Improvement, Task, Bug, Story
+            "ticketNum": "SBATS-6626",
+            "storyPoint": 2
+            //, other properties
+        },
+        "id_item2": {
+            "type": 1, //0 - Ticket , 1 - Person
+            "name": "Calvin",
+            "team": "Server Side",
+            "job": "Engineer"
+            //, other properties
+        }
+    },
+    "board": {
+        "id_row1" : {
+             "id_column1": {
+                 "id_item1": 1,
+                 "id_item2": 1
+             },
+             "id_column2": { }
+        }
+    },
+    "containers": {
+        "container1": {
+                "name": "Extra Container",
+                "items": {
+                    "id_item1": 1,
+                    "id_item2": 1
+                }
+        },
+        "notAssigned": {
+            "name": "Not Assigned",
+            "items": {
+                "id_item1": 1,
+                "id_item2": 1
+            }
+        },
+        "released": {
+            "name": "Released",
+            "items": {
+                "id_item1": 1,
+                "id_item2": 1
+            }
+        }
+    }
+}
