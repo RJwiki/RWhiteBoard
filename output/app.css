@@ -73,6 +73,9 @@ body {
     color: #0000FF
 }
 
+.rj-droppable-td {
+  padding: 0px !important
+}
 
 .rj-droppable {
     width: 100%;
@@ -87,18 +90,18 @@ body {
 
 .card {
   float: left;
-  width: 150px;
+  width: 100px;
   min-height: 100px;
   position: relative;
   display: block;
-  margin: 0.75rem;
+  margin: 0.5rem;
   background-color: #fff;
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-block {
-  padding: 1.25rem;
+  padding: 0.5rem;
 }
 
 .card-block::after {
