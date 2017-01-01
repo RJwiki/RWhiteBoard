@@ -1,15 +1,23 @@
 import React, { Component, PropTypes } from 'react'
+import { Draggable } from 'react-drag-and-drop'
 
 class DragItem extends Component{
+    constructor(){ 
+		super(); 
+	}
+	componentDidMount(){ 
+
+	}
     onDrop(e) {
         console.log('onDrop:' + this.props.rowId + ", " +  this.props.colId);
         console.log(e);
     }
     render(){ 
-        const { rowId, colId, children, item } = this.props; 
+        const { rowId, colId, itemId, item } = this.props; 
         const onDrop = this.onDrop;
+        const data = JSON.stringify({rowId, colId, itemId });
         return (
-            <Draggable type="ticket" data={ {rowId, colId, itemId } }>
+            <Draggable type="ticket" data={ data }>
                 <div className="card card-inverse card-primary" >
                     <div className="card-block">
                         { (item.ticketNum) && <h4 className="card-title">{ item.ticketNum }</h4> }

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -9,18 +9,18 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import _ from 'lodash'
   	
 import reducers from './reducers'
+import main from './containers/main'
 
-import RWhiteBoard from './containers/RWhiteBoard'
+import thunk from 'redux-thunk'
+import createLogger from 'redux-logger';
+const logger = createLogger();
 
-const store = createStore(reducers);
-/*
-(function () {
-	console.log('reducers');
-  	console.log(reducers);
-  	console.log(store);
-})();*/
+const store = createStore(
+  reducers,
+  {},
+  applyMiddleware(thunk, logger)
+)
 
-// Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
 
 
@@ -38,8 +38,8 @@ if (_.endsWith(BASE_URL,'/')) BASE_URL = BASE_URL.substring(0, BASE_URL.length -
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={ history }>
-			<Route path={ BASE_URL +  "/" } component={ RWhiteBoard } />
-			<Route path="*" component={ RWhiteBoard } />
+			<Route path={ BASE_URL +  "/" } component={ main } />
+			<Route path="*" component={ main } />
 		</Router>
 	</Provider>
 , document.getElementById("main"));

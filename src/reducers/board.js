@@ -1,5 +1,4 @@
-import { SET_BOARD, ADD_PARTICIPANT, REMOVE_PARTICIPANT, UPDATE_PARTICIPANT, ADD_TICKET, REMOVE_TICKET, UPDATE_TICKET } from '../actions/board'
-import { PATH_BOARD, PATH_NOT_ASSIGN, PATH_RELEASED } from '../firebase/path'
+import { SET_BOARD } from '../actions/board'
 
 export const INITIAL_STATE = {
     "config":{
@@ -14,10 +13,8 @@ export const INITIAL_STATE = {
     "columns": {},
     "items":{},
     "board": {},
-    "notAssigned": {
-        "name": "Not Assigned"
-    }
-}
+    "containers": {}
+};
 
 
 export default function board(state = INITIAL_STATE, action) {
@@ -39,7 +36,7 @@ export default function board(state = INITIAL_STATE, action) {
             store.addItem(PATH_BOARD, id, newState[id]);
             return Object.assign({}, state, newState);
         }
-    }*/
+    }
     else if(action.type === REMOVE_PARTICIPANT) {
         if (action.id) {
             let newState = Object.assign({}, state);
@@ -51,7 +48,7 @@ export default function board(state = INITIAL_STATE, action) {
         if (action.id) {
             return Object.assign({}, state, { });
         }
-    }
+    }*/
 
     return state
 }

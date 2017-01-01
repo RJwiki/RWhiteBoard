@@ -16,7 +16,7 @@ let DragItem = React.createClass({
 
     render: function() {
         return (
-            <Draggable type="ticket" position={{ part: 1, stage: 'in_progress' }} data={ this.props.name }>
+            <Draggable type="ticket" data={ this.props.name }>
                 <div className="card card-inverse card-primary" >
                     <div className="card-block">
                         <h4 className="card-title">{ this.props.name }</h4>
