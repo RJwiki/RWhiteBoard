@@ -22,82 +22,23 @@ body {
   margin-bottom: 20px;
 }
 
-/* Text Block */
 
-.rj-textblock {
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px
-}
 
-.rj-textblock h4 {
-    margin-top: 0;
-    margin-bottom: 5px
-}
-
-.rj-textblock p:last-child {
-    margin-bottom: 0
-}
-
-.rj-textblock code {
-    border-radius: 3px
-}
-
-.rj-textblock+.rj-textblock {
-    margin-top: -5px
-}
-
-.rj-textblock-red {
-    border-left-color: #FF0000
-}
-
-.rj-textblock-red h4 {
-    color: #FF0000
-}
-
-.rj-textblock-green {
-    border-left-color: #22CC55
-}
-
-.rj-textblock-green h4 {
-    color: #22CC55
-}
-
-.rj-textblock-blue {
-    border-left-color: #0000FF
-}
-
-.rj-textblock-blue h4 {
-    color: #0000FF
-}
-
-.rj-droppable-td {
-  padding: 0px !important
-}
-
-.rj-droppable {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: block;
-    margin: 0rem;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    min-width: 100px;
-    min-height: 100px;
-}
 
 .card {
   float: left;
   width: 100px;
-  min-height: 100px;
+  min-height: 50px;
   position: relative;
   display: block;
   margin: 0.5rem;
   background-color: #fff;
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card p{
+  margin: 0px;
 }
 
 .card-block {
@@ -111,8 +52,8 @@ body {
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
-  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .card-subtitle {
@@ -279,11 +220,12 @@ body {
   color: #fff;
 }
 
+
 .card-inverse .card-link,
 .card-inverse .card-text,
 .card-inverse .card-subtitle,
 .card-inverse .card-blockquote .blockquote-footer {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.8);
   word-wrap: break-word;
 }
 
@@ -395,4 +337,126 @@ body {
     display: inline-block;
     width: 100%;
   }
+}
+
+.rj-textblock {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px
+}
+
+.rj-textblock h4 {
+    margin-top: 0;
+    margin-bottom: 5px
+}
+
+.rj-textblock p:last-child {
+    margin-bottom: 0
+}
+
+.rj-textblock code {
+    border-radius: 3px
+}
+
+.rj-textblock+.rj-textblock {
+    margin-top: -5px
+}
+
+.rj-textblock-red {
+    border-left-color: #FF0000
+}
+
+.rj-textblock-red h4 {
+    color: #FF0000
+}
+
+.rj-textblock-green {
+    border-left-color: #22CC55
+}
+
+.rj-textblock-green h4 {
+    color: #22CC55
+}
+
+.rj-textblock-blue {
+    border-left-color: #0000FF
+}
+
+.rj-textblock-blue h4 {
+    color: #0000FF
+}
+
+.rj-droppable-td {
+  padding: 0px !important
+}
+
+.rj-droppable {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    margin: 0rem;
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.rj-text-center {
+  text-align: center;
+}
+
+.rj-ticket-title {
+  color: rgb(255, 255, 255);
+}
+
+.rj-ticket-btn {
+  font-size: 8px;
+  text-align: right;
+}
+
+.rj-ticket-btn a{
+  color: rgb(255, 255, 255) !important;
+}
+
+.rj-ticket-edit {
+  float: left;
+  width: 200px;
+  min-height: 50px;
+  position: relative;
+  display: block;
+  margin: 0.5rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.rj-droppable-tr {
+  height: 1rem;
+}
+.rj-droppable-td {
+  height: inherit;
+}
+.rj-ticket-edit label {
+    color: rgb(255, 255, 255) !important;
+}
+
+.rj-ticket-improvement {
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+.rj-ticket-task {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.rj-ticket-bug {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.rj-ticket-story {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
 }

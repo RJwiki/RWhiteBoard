@@ -18,7 +18,7 @@ const logger = createLogger();
 const store = createStore(
   reducers,
   {},
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk)
 )
 
 const history = syncHistoryWithStore(browserHistory, store)

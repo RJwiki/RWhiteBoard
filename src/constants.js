@@ -1,2 +1,1 @@
-export const INCREASE = 'INCREASE'
-export const DECREASE = 'DECREASE'
+export const TICKET_URL = "https://bizreach.atlassian.net/browse/"
