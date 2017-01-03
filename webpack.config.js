@@ -12,7 +12,7 @@ module.exports = {
         app: ["./src/index.js"]
     },
     output: {
-            filename: "./output/app.js"
+            filename: "./dist/app.js"
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -24,6 +24,27 @@ module.exports = {
         //'react-redux': "reactRedux",
         //'redux-form': "reduxForm",
         'lodash': "_"
+    },
+    
+    devServer: {
+        proxy: { 
+            '/**': {  //catch all requests
+                target: '/index.html',  //default target
+                secure: false,
+                bypass: function(req, res, opt){
+                    //your custom code to check for any exceptions
+                    if(req.path.includes('/dist/') === true){
+                        return req.path;
+                    }else{
+                        return '/';
+                    }
+
+                    if (req.headers.accept.indexOf('html') !== -1) {
+                        return '/index.html';
+                    }
+                }
+            }
+        }
     },
     module: {
         loaders: [

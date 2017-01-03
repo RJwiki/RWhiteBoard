@@ -8,7 +8,6 @@ import { PATH_ROOT, PATH_CONFIG, PATH_ROWS, PATH_COLUMNS, PATH_ITEMS, PATH_BOARD
 import i18n from '../i18n.js' 
 
 export const SET_MENU = 'MN_SET_MENU'
-
 export const ERROR = 'MN_ERROR'
 
 const ref = Db.ref(PATH_ROOT);

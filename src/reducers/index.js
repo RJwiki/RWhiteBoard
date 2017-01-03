@@ -1,5 +1,4 @@
-import count from './count.js';  
-import RGoogleInfo from './RGoogleInfo.js';
+
 import board from './board.js';
 import mainmenu from './mainmenu';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'

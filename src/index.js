@@ -10,7 +10,7 @@ import _ from 'lodash'
   	
 import reducers from './reducers'
 import main from './containers/main'
-
+import NavBar from './components/NavBar'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger';
 const logger = createLogger();
@@ -37,10 +37,12 @@ if (_.endsWith(BASE_URL,'/')) BASE_URL = BASE_URL.substring(0, BASE_URL.length -
 
 ReactDOM.render(
 	<Provider store={store}>
+		<div>
 		<Router history={ history }>
 			<Route path={ BASE_URL +  "/" } component={ main } />
 			<Route path="*" component={ main } />
 		</Router>
+		</div>
 	</Provider>
 , document.getElementById("main"));
 

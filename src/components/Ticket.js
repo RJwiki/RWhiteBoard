@@ -31,12 +31,8 @@ class Ticket extends Component{
         this.setState({ isEdit: false });
     }
     onOKClick(){
-        //console.log('onOkClick');
         const { formValue, itemId } = this.props; 
-        console.log(formValue);
-
-        updateItem(Object.assign({}, formValue, { tyep: 0, itemId: itemId}));
-        
+        updateItem(Object.assign({}, formValue, { tyep: 0, itemId: itemId})); 
         this.setState({ isEdit: false });
     }
 	componentDidMount(){

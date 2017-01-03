@@ -74,7 +74,6 @@ class WhiteBoard extends Component{
                         <tr className="rj-droppable-tr">
                         {
                             Object.keys(containers).map(function (containerId) {
-                                console.log(containerId);
                                 return (
                                         <DropContainer key={ 'cont_' + containerId } container = {containerId}>
                                             {
