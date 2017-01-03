@@ -75,8 +75,48 @@ export function moveItem(data) {
     else if (to.container) dbControl.addItem(PATH_CONTAINER + '/' + to.container + '/items/', itemId, 1);
 }
 
+export function deleteItem(data) {
+    const { from, itemId } = data;
+    //Remove from board / containers
+    if (from) {
+      if (from.colId && from.rowId) dbControl.deleteItem(PATH_BOARD, from.rowId + '/' + from.colId + '/' + itemId);
+      else if (from.container) dbControl.deleteItem(PATH_CONTAINER + '/' + from.container + '/items/', itemId);
+    }
+    //Remove from items
+    if (itemId) {
+        dbControl.deleteItem(PATH_ITEMS, itemId);
+    }
+}
 
 export function updateItem(data) {
     const { itemId } = data;
     if (itemId) dbControl.updateItem(PATH_ITEMS, itemId, data);
+}
+
+export function updateRow(data) {
+    const { rowId } = data;
+    if (rowId) dbControl.updateItem(PATH_ROWS, rowId, data);
+}
+
+export function updateColumn(data) {
+    const { colId } = data;
+    if (colId) dbControl.updateItem(PATH_COLUMNS, colId, data);
+}
+
+export function addItem(container) {
+    const itemId = dbControl.createID(PATH_ITEMS);
+    if (itemId && container) {
+      dbControl.addItem(PATH_ITEMS, itemId, { name: '' });
+      dbControl.addItem(PATH_CONTAINER + '/' + container + '/items/', itemId, 1);
+    }
+}
+
+export function addRow() {
+    const rowId = dbControl.createID(PATH_ROWS);
+    if (rowId) dbControl.addItem(PATH_ROWS, rowId, { name: '' });
+}
+
+export function addColumn() {
+    const colId = dbControl.createID(PATH_COLUMNS);
+    if (colId) dbControl.addItem(PATH_COLUMNS, colId, { name: '' });
 }

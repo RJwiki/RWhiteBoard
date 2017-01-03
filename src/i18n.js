@@ -15,10 +15,12 @@ const i18n = {
     save: 'Save',
     edit: 'Edit',
     cancel: 'Cancel',
+    delete: 'Delete',
     bug: 'Bug',
     improvement: 'Improvement',
     story: 'Story',
-    task: 'Task'
+    task: 'Task',
+    warn_msg_delete: 'Are you sure to delete?'
 };
 
 export default i18n;

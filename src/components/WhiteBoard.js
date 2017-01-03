@@ -1,24 +1,46 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { INITIAL_STATE, setBoard, loadBoard } from '../actions/board'
+import { INITIAL_STATE, setBoard, loadBoard, addRow, addColumn, addItem } from '../actions/board'
 import DropCell from './DropCell'
 import DropContainer from './DropContainer'
+import DropDelete from './DropDelete'
+
 import DragItem from './DragItem'
 import RowHeader from './RowHeader'
+import ColumnHeader from './ColumnHeader'
 
 class WhiteBoard extends Component{
 	constructor(){ 
 		super(); 
+        this.addRowClick = this.addRowClick.bind(this);
+        this.addColumnClick = this.addColumnClick.bind(this);
+        this.addItemClick = this.addItemClick.bind(this);
 	}
 	componentDidMount(){ 
-		const { dispatch } = this.props; 
+		const { dispatch } = this.props;
 		dispatch(loadBoard()); 
 	}
-    render(){ 
-        const rThis = this;
+    addRowClick() {
+        addRow();
+    }
+    addColumnClick() {
+        addColumn();
+    }
+    addItemClick() {
+        const { config } = this.props;
+        addItem(config.defaultContainer);
+    }
+    render(){
         const { config, rows, columns, items, board, containers } = this.props;
+        const { addRowClick, addColumnClick, addItemClick } = this;
         return (
             <div className="container">
+                <p>
+                    { (config.rowFix < 0 || true) && <button type="button" className="btn btn-default rj-btns" onClick = { addRow }>Add Row</button> }
+                    { (config.columnFix < 0|| true) && <button type="button" className="btn btn-default rj-btns" onClick = { addColumn }>Add Column</button> }
+                    <button type="button" className="btn btn-default rj-btns" onClick = { addItemClick }>Add Item</button> 
+                </p>
+                <br />
                 <table className="table table-bordered">
 					{
 						(config.columnShowTitle) && <thead>
@@ -26,7 +48,7 @@ class WhiteBoard extends Component{
                                 { (config.rowShowTitle) && <th /> }
                                 {
                                     Object.keys(columns).map(function (colId) {
-                                        return <th key={ 'header_' + colId }>{ columns[colId].name }</th>;
+                                        return <ColumnHeader key={ 'header_' + colId } colId = {colId} item = {columns[colId]} ></ColumnHeader>;
                                     }, this)
                                 }
 							</tr>
@@ -34,7 +56,7 @@ class WhiteBoard extends Component{
 					}
                     <tbody>
                         {
-                            Object.keys(board).map(function (rowId) {
+                            Object.keys(rows).map(function (rowId) {
                                 return (<tr key={ 'row_' + rowId } className="rj-droppable-tr">
                                             { (config.rowShowTitle) && <RowHeader rowId = {rowId} item = {rows[rowId]}></RowHeader> }
                                             {
@@ -42,9 +64,9 @@ class WhiteBoard extends Component{
                                                     return (
                                                             <DropCell key={ 'cell_' + rowId + colId } rowId = {rowId} colId = {colId}>
                                                                 {
-                                                                    (board[rowId] && board[rowId][colId]) &&
+                                                                    (board && board[rowId] && board[rowId][colId]) &&
                                                                     Object.keys(board[rowId][colId]).map(function (itemId) {
-                                                                        return <DragItem key={ 'itm_' + rowId + colId + itemId } rowId = {rowId} colId = {colId} itemId = {itemId} item = { items[itemId] } />;
+                                                                        if (items && items[itemId]) return <DragItem key={ 'itm_' + rowId + colId + itemId } rowId = {rowId} colId = {colId} itemId = {itemId} item = { items[itemId] } />;
                                                                     }, this)
                                                                 }
                                                             </DropCell>
@@ -79,7 +101,7 @@ class WhiteBoard extends Component{
                                             {
                                                 (containers[containerId] && containers[containerId].items) &&
                                                 Object.keys(containers[containerId].items).map(function (itemId) {
-                                                    return <DragItem key={ 'citm_' + containerId + itemId } container = {containerId} itemId = {itemId} item = { items[itemId] } />;
+                                                    if (items && items[itemId]) return <DragItem key={ 'citm_' + containerId + itemId } container = {containerId} itemId = {itemId} item = { items[itemId] } />;
                                                 }, this)
                                             }
                                         </DropContainer>
@@ -89,6 +111,8 @@ class WhiteBoard extends Component{
                         </tr>
                     </tbody>
                 </table>
+                <br />
+                <DropDelete />
             </div>
         )
     }

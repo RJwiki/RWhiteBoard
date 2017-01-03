@@ -19,12 +19,14 @@ class Ticket extends Component{
 	}
     onEditClick(){
         const { itemId, item, dispatch } = this.props; 
-
+        const getValueWithDefault = function(s, defaultValue = ''){
+            return (s) ? s : defaultValue
+        }
         dispatch(change('Ticket', 'itemId', itemId));
-        dispatch(change('Ticket', 'ticketType', item.ticketType));
-        dispatch(change('Ticket', 'ticketNum', item.ticketNum));
-        dispatch(change('Ticket', 'name', item.name));
-        dispatch(change('Ticket', 'storyPoint', item.storyPoint));
+        dispatch(change('Ticket', 'ticketType', getValueWithDefault(item.ticketType)));
+        dispatch(change('Ticket', 'ticketNum', getValueWithDefault(item.ticketNum ? item.ticketNum : '')));
+        dispatch(change('Ticket', 'name', getValueWithDefault(item.name)));
+        dispatch(change('Ticket', 'storyPoint', getValueWithDefault(item.storyPoint)));
         this.setState({ isEdit: true });
     }
     onCancelClick(){
@@ -39,11 +41,11 @@ class Ticket extends Component{
 	}
 
     render(){ 
-        const { itemId, item } = this.props; 
+        const { itemId, item, selectedTicketType } = this.props; 
         const { onEditClick, onOKClick, onCancelClick } = this;
         let classType = "improvement";
 
-        if (this.state.isEdit) classType = this.props.selectedTicketType;
+        if (this.state.isEdit && (selectedTicketType === 'improvement' || selectedTicketType === 'bug' || selectedTicketType === 'story' || selectedTicketType === 'task')) classType = selectedTicketType;
         else if (item.ticketType === 'improvement' || item.ticketType === 'bug' || item.ticketType === 'story' || item.ticketType === 'task') classType = item.ticketType;
 
         const ticketClass = ((this.state.isEdit) ? 'rj-ticket-edit' : "card") +  " card-inverse rj-ticket-"+classType;

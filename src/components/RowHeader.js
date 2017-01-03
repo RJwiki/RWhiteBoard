@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm, submit, change, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import i18n from '../i18n' 
+import { updateRow } from '../actions/board'
 
 class RowHeader extends Component{
     constructor(){ 
@@ -16,17 +17,20 @@ class RowHeader extends Component{
         this.onOKClick = this.onOKClick.bind(this);
 	}
     onEditClick(){
-        const { rowId, dispatch } = this.props; 
+        const { rowId, item, dispatch } = this.props; 
 
         dispatch(change('RowHeader', 'rowId', rowId));
+        dispatch(change('RowHeader', 'name', item.name));
+        dispatch(change('RowHeader', 'hours', item.hours));
+
         this.setState({ isEdit: true });
     }
     onCancelClick(){
         this.setState({ isEdit: false });
     }
     onOKClick(){
-        const { formValue, itemId } = this.props; 
-        updateItem(Object.assign({}, formValue, { tyep: 0, itemId: itemId})); 
+        const { formValue, rowId } = this.props; 
+        updateRow(Object.assign({}, formValue, { rowId: rowId})); 
         this.setState({ isEdit: false });
     }
 	componentDidMount(){
@@ -44,13 +48,14 @@ class RowHeader extends Component{
 							</div>
 							<div className="form-group">
 								<label>{ i18n.hours }</label>
-								<Field name="storyPoint" component="input" type="number" className="form-control" />
+								<Field name="hours" component="input" type="number" className="form-control" />
 							</div>
-							<p className="rj-row-header-btn"><a href = "#" onClick = {onOKClick}>OK</a>&nbsp;<a href = "#" onClick = {onCancelClick} >Cancel</a></p>
+							<p className="rj-row-header-btn"><a href = "#" onClick = {onOKClick}>OK</a>&nbsp;&nbsp;<a href = "#" onClick = {onCancelClick} >Cancel</a></p>
 						</div>
                      : 
-						<div className="rj-row-header">                        
-							{ (item.name) && <p className="rj-row-header-title">{ item.name }</p> }
+						<div className="rj-row-header">                    
+                            
+							{ (item.name) && <p className="rj-row-header-title"><span className="glyphicon glyphicon-user rj-icon-user" />&nbsp;&nbsp;{ item.name }</p> }
 							{ (item.hours) && <p className="rj-row-header-text">{ item.hours } hours</p> }
 							<p className="rj-row-header-btn"><a href = "#" onClick = {onEditClick}>Edit</a></p>
 						</div>
@@ -64,12 +69,7 @@ RowHeader.propTypes = {
 } 
 
 RowHeader = reduxForm({
-    form: 'RowHeader',
-    onSubmit: function(fields, dispatch){
-        console.log('onSubmit------------');
-        console.log(fields);
-        console.log(dispatch);
-    }
+    form: 'RowHeader'
 })(RowHeader)
 
 
