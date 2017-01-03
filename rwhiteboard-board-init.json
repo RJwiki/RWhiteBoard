@@ -1,0 +1,15 @@
+{
+  "config" : {
+    "columnFix" : 4,
+    "columnShowTitle" : true,
+    "defaultContainer" : "notAssigned",
+    "rowFix" : -1,
+    "rowShowTitle" : true,
+    "type" : 1
+  },
+  "containers" : {
+    "notAssigned" : {
+      "name" : "Not Assigned"
+    }
+  }
+}

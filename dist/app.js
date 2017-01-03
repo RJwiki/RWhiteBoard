@@ -7949,7 +7949,7 @@
 
 	var INITIAL_STATE = exports.INITIAL_STATE = {
 	    title: _i18n2.default.appName,
-	    items: [{ text: _i18n2.default.home, allowAccessWithoutLogin: true, url: '/' }, { text: _i18n2.default.addBoard, url: '/addBoard' }, { text: _i18n2.default.whiteBoard, url: '/', items: [{ text: 'チケット', url: '/boards/test1' }, { text: '座席表', url: '/boards/test2' }
+	    items: [{ text: _i18n2.default.home, allowAccessWithoutLogin: true, url: '/' }, { text: _i18n2.default.addBoard, url: '/addBoard' }, { text: _i18n2.default.whiteBoard, url: '/', items: [{ text: 'チケット', url: '/boards/test1' }, { text: '座席表', url: '/boards/test2' }, { text: '選考', url: '/boards/test3' }
 	        /*{ text: i18n.improvement, url: '/improvement' },
 	        { text: i18n.story, url: '/story' },
 	        { text: i18n.task, url: '/task' }*/
@@ -19558,8 +19558,6 @@
 	                item = _props.item;
 
 	            var data = JSON.stringify({ rowId: rowId, colId: colId, itemId: itemId, container: container });
-	            console.log('item');
-	            console.log(item);
 	            return _react2.default.createElement(
 	                _reactDragAndDrop.Draggable,
 	                { type: 'ticket', data: data },
