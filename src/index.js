@@ -10,6 +10,8 @@ import _ from 'lodash'
   	
 import reducers from './reducers'
 import main from './containers/main'
+import addBoard from './containers/addBoard'
+
 import NavBar from './components/NavBar'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger';
@@ -40,6 +42,7 @@ ReactDOM.render(
 		<div>
 		<Router history={ history }>
 			<Route path={ BASE_URL +  "/" } component={ main } />
+			<Route path={ BASE_URL +  "/addBoard" } component={ addBoard } />
 			<Route path="*" component={ main } />
 		</Router>
 		</div>

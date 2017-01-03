@@ -1,0 +1,10 @@
+{
+    "boards":{
+        "board1": { }, //Refer to board_definition.json
+        "board2": { }
+    },
+    "boardNames":{
+        "board1": "Ticket", //board's name, for menu
+        "board2": "Seating Plan"
+    }
+}

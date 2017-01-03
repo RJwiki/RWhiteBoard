@@ -1,5 +1,7 @@
 const i18n = {
+    appName:  'RWhiteBoard',
     whiteBoard: 'White Board',
+    addBoard: 'Add New Board',
     home: 'Home',
     login: 'Login',
     logout: 'Logout',
@@ -7,6 +9,8 @@ const i18n = {
     ticketNum: 'Ticket Number',
     ticketName: 'Ticket Name',
     storyPoint: 'Story Point',
+    name: 'Name',
+    hours: 'Hours',
     ok: 'OK',
     save: 'Save',
     edit: 'Edit',

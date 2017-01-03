@@ -4,7 +4,7 @@ import { INITIAL_STATE, setBoard, loadBoard } from '../actions/board'
 import DropCell from './DropCell'
 import DropContainer from './DropContainer'
 import DragItem from './DragItem'
-
+import RowHeader from './RowHeader'
 
 class WhiteBoard extends Component{
 	constructor(){ 
@@ -36,7 +36,7 @@ class WhiteBoard extends Component{
                         {
                             Object.keys(board).map(function (rowId) {
                                 return (<tr key={ 'row_' + rowId } className="rj-droppable-tr">
-                                            { (config.rowShowTitle) && <td className="rj-droppable-td">{rows[rowId].name}</td> }
+                                            { (config.rowShowTitle) && <RowHeader rowId = {rowId} item = {rows[rowId]}></RowHeader> }
                                             {
                                                 Object.keys(columns).map(function (colId) {
                                                     return (
