@@ -12,27 +12,24 @@ import ColumnHeader from './ColumnHeader'
 class WhiteBoard extends Component{
 	constructor(){ 
 		super(); 
-        this.addRowClick = this.addRowClick.bind(this);
-        this.addColumnClick = this.addColumnClick.bind(this);
+        this.loadBoard = this.loadBoard.bind(this);
         this.addItemClick = this.addItemClick.bind(this);
 	}
+    loadBoard(){
+		//const { dispatch, name } = this.props;
+		//dispatch(loadBoard(name)); 
+    }
 	componentDidMount(){ 
-		const { dispatch } = this.props;
-		dispatch(loadBoard()); 
+		//this.loadBoard();
 	}
-    addRowClick() {
-        addRow();
-    }
-    addColumnClick() {
-        addColumn();
-    }
     addItemClick() {
         const { config } = this.props;
-        addItem(config.defaultContainer);
+        addItem(config.defaultContainer, config.type);
     }
     render(){
         const { config, rows, columns, items, board, containers } = this.props;
         const { addRowClick, addColumnClick, addItemClick } = this;
+
         return (
             <div className="container">
                 <p>
@@ -47,7 +44,7 @@ class WhiteBoard extends Component{
 							<tr>
                                 { (config.rowShowTitle) && <th /> }
                                 {
-                                    Object.keys(columns).map(function (colId) {
+                                    (columns) && Object.keys(columns).map(function (colId) {
                                         return <ColumnHeader key={ 'header_' + colId } colId = {colId} item = {columns[colId]} ></ColumnHeader>;
                                     }, this)
                                 }
@@ -56,11 +53,11 @@ class WhiteBoard extends Component{
 					}
                     <tbody>
                         {
-                            Object.keys(rows).map(function (rowId) {
+                            (rows) && Object.keys(rows).map(function (rowId) {
                                 return (<tr key={ 'row_' + rowId } className="rj-droppable-tr">
                                             { (config.rowShowTitle) && <RowHeader rowId = {rowId} item = {rows[rowId]}></RowHeader> }
                                             {
-                                                Object.keys(columns).map(function (colId) {
+                                                (columns) && Object.keys(columns).map(function (colId) {
                                                     return (
                                                             <DropCell key={ 'cell_' + rowId + colId } rowId = {rowId} colId = {colId}>
                                                                 {
@@ -85,7 +82,7 @@ class WhiteBoard extends Component{
 						<thead>
 							<tr>
                                 {
-                                    Object.keys(containers).map(function (containerId) {
+                                    (containers) && Object.keys(containers).map(function (containerId) {
                                         return <th key={ 'header_' + containerId }>{ containers[containerId].name }</th>;
                                     }, this)
                                 }
@@ -95,7 +92,7 @@ class WhiteBoard extends Component{
                     <tbody>
                         <tr className="rj-droppable-tr">
                         {
-                            Object.keys(containers).map(function (containerId) {
+                            (containers) && Object.keys(containers).map(function (containerId) {
                                 return (
                                         <DropContainer key={ 'cont_' + containerId } container = {containerId}>
                                             {

@@ -34,7 +34,7 @@ class Ticket extends Component{
     }
     onOKClick(){
         const { formValue, itemId } = this.props; 
-        updateItem(Object.assign({}, formValue, { tyep: 0, itemId: itemId})); 
+        updateItem(Object.assign({}, formValue, { type: 0, itemId: itemId})); 
         this.setState({ isEdit: false });
     }
 	componentDidMount(){
@@ -100,12 +100,7 @@ Ticket.propTypes = {
  //export default RAccountForm
 //Convert to Redux-Form
 Ticket = reduxForm({
-    form: 'Ticket',
-    onSubmit: function(fields, dispatch){
-        console.log('onSubmit------------');
-        console.log(fields);
-        console.log(dispatch);
-    }
+    form: 'Ticket'
 })(Ticket)
 
 

@@ -1,75 +1,88 @@
 {
-    "config":{
-        "type": 0, 
-        "rowFix": 0,
-        "columnFix": 0,
-        "rowShowTitle": true,
-        "columnShowTitle": true,
-        "defaultContainer": "notAssigned"
-    },
-    "rows": {
-        "id_row1" : {
-            "name": "Alice",
-            "hours": 25
-        },
-        "id_row2" : {
-            "name": "Bob",
-            "hours": 5
-        }
-    },
-    "columns": {
-        "id_column1" : {
-            "name": "Open"
-        },
-        "id_column2" : {
-            "name": "In Progress"
-        }
-    },
-    "items":{
-        "id_item1": {
-            "type": 0,
-            "name": "Ticket Name",
-            "ticketType": "Improvement",
-            "ticketNum": "SBATS-6626",
-            "storyPoint": 2
-        },
-        "id_item2": {
-            "type": 1,
-            "name": "Calvin",
-            "team": "Server Side",
-            "job": "Engineer"
-        }
-    },
-    "board": {
-        "id_row1" : {
-             "id_column1": {
-                 "id_item1": 1,
-                 "id_item2": 1
-             },
-             "id_column2": { }
-        }
-    },
-    "containers": {
-        "container1": {
-                "name": "Extra Container",
-                "items": {
-                    "id_item1": 1,
-                    "id_item2": 1
-                }
-        },
-        "notAssigned": {
-            "name": "Not Assigned",
-            "items": {
-                "id_item1": 1,
-                "id_item2": 1
-            }
-        },
-        "released": {
-            "name": "Released",
-            "items": {
-                "id_item1": 1,
-                "id_item2": 1
-            }
-        }
+  "board" : {
+    "-K_ZzTQxV_plSGcd96m8" : {
+      "-K_ZzS4ZwsLwB7Ox7Ktp" : {
+        "-K_Zxr1u0Ux-5h8vu2Y7" : 1
+      },
+      "-K_ZzeIDrVyZtR6GDs7O" : {
+        "-K_ZxqrBZ36hqywYoPL3" : 1
+      },
+      "-K_Zzi4iGJuB92-V20nZ" : {
+        "-K_ZzEliRI4rWru3f2SV" : 1
+      }
     }
+  },
+  "columns" : {
+    "-K_ZzS4ZwsLwB7Ox7Ktp" : {
+      "colId" : "-K_ZzS4ZwsLwB7Ox7Ktp",
+      "name" : "Open"
+    },
+    "-K_ZzeIDrVyZtR6GDs7O" : {
+      "colId" : "-K_ZzeIDrVyZtR6GDs7O",
+      "name" : "In Progress"
+    },
+    "-K_Zzi4iGJuB92-V20nZ" : {
+      "colId" : "-K_Zzi4iGJuB92-V20nZ",
+      "name" : "Review"
+    },
+    "-K_ZzlTLprD8IWjz5e92" : {
+      "colId" : "-K_ZzlTLprD8IWjz5e92",
+      "name" : "Done"
+    }
+  },
+  "config" : {
+    "columnFix" : 4,
+    "columnShowTitle" : true,
+    "defaultContainer" : "notAssigned",
+    "rowFix" : -1,
+    "rowShowTitle" : true,
+    "type" : 0
+  },
+  "containers" : {
+    "notAssigned" : {
+      "name" : "Not Assigned"
+    },
+    "released" : {
+      "items" : {
+        "id_item2" : 1
+      },
+      "name" : "Released"
+    }
+  },
+  "items" : {
+    "-K_ZxqrBZ36hqywYoPL3" : {
+      "itemId" : "-K_ZxqrBZ36hqywYoPL3",
+      "name" : "AAA",
+      "storyPoint" : "20",
+      "ticketNum" : "SBATS-1123",
+      "ticketType" : "bug",
+      "type" : 0
+    },
+    "-K_Zxr1u0Ux-5h8vu2Y7" : {
+      "itemId" : "-K_Zxr1u0Ux-5h8vu2Y7",
+      "storyPoint" : "20",
+      "ticketNum" : "SBATS-1123",
+      "ticketType" : "task",
+      "type" : 0
+    },
+    "-K_ZzEliRI4rWru3f2SV" : {
+      "itemId" : "-K_ZzEliRI4rWru3f2SV",
+      "name" : "API　Dえsign",
+      "storyPoint" : "5",
+      "ticketNum" : "SBATS-1",
+      "type" : 0
+    }
+  },
+  "rows" : {
+    "-K_ZzTQxV_plSGcd96m8" : {
+      "hours" : "12",
+      "name" : "AAAA",
+      "rowId" : "-K_ZzTQxV_plSGcd96m8"
+    },
+    "-K_ZzWiEJvuVRZsNaQzw" : {
+      "hours" : "15",
+      "name" : "VBBBBBB",
+      "rowId" : "-K_ZzWiEJvuVRZsNaQzw"
+    }
+  }
 }

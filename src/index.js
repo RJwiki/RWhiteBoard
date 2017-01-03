@@ -9,7 +9,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import _ from 'lodash'
   	
 import reducers from './reducers'
-import main from './containers/main'
+import board from './containers/board'
 import addBoard from './containers/addBoard'
 
 import NavBar from './components/NavBar'
@@ -41,9 +41,10 @@ ReactDOM.render(
 	<Provider store={store}>
 		<div>
 		<Router history={ history }>
-			<Route path={ BASE_URL +  "/" } component={ main } />
+			<Route path={ BASE_URL +  "/" } component={ board } />
 			<Route path={ BASE_URL +  "/addBoard" } component={ addBoard } />
-			<Route path="*" component={ main } />
+			<Route path={ BASE_URL +  "/boards/:board" } component={ board } />
+			<Route path="*" component={ board } />
 		</Router>
 		</div>
 	</Provider>

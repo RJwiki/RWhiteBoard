@@ -1,7 +1,11 @@
-export const PATH_ROOT = '/board'
-export const PATH_CONFIG = '/board/config'
-export const PATH_ROWS = '/board/rows'
-export const PATH_COLUMNS = '/board/columns'
-export const PATH_ITEMS = '/board/items'
-export const PATH_BOARD = '/board/board'
-export const PATH_CONTAINER = '/board/containers'
+export const PATH_ROOT = '/'
+export const PATH_CONFIG = '/config'
+export const PATH_ROWS = '/rows'
+export const PATH_COLUMNS = '/columns'
+export const PATH_ITEMS = '/items'
+export const PATH_BOARD = '/board'
+export const PATH_CONTAINER = '/containers'
+
+
+export const PATH_BOARDS = '/boards'
+export const PATH_BOARD_NAMES = '/boardNames'

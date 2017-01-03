@@ -37,12 +37,8 @@ let NavBar = React.createClass({
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 oThis.setState({ loginText: i18n.logout, loggedIn: true });
-                //RStore.setGoogleUserInfo(user);
-                //RStore.setLoggedIn(true);
             } else {;
                 oThis.setState({ loginText: i18n.login, loggedIn: false });
-                RStore.setGoogleUserInfo({});
-                RStore.setLoggedIn(false);
             }
             oThis.setState({ disabled: false });
         });

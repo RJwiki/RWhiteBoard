@@ -8,12 +8,7 @@ class DropCell extends Component{
         this.onDrop = this.onDrop.bind(this);
 	}
     onDrop(e) {
-        //const { rowId, colId, children } = this.props; 
-        //console.log('onDrop:' + rowId + ", " + colId);
         const { rowId, colId } = this.props; 
-        //console.log('target: '+ rowId + ' , ' + colId);
-        //console.log(e);
-        //console.log(JSON.parse(e.ticket));
         const from = JSON.parse(e.ticket);
         moveItem({ from: from, to: { rowId, colId }, itemId: from.itemId });
         this.onDrop = this.onDrop.bind(this);

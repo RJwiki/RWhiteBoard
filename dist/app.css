@@ -529,3 +529,40 @@ body {
     margin-right: 10px;
     margin-bottom: 20px;
 }
+
+
+.rj-person {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+}
+
+.rj-person-edit {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+  float: left;
+  width: 200px;
+  min-height: 50px;
+  position: relative;
+  display: block;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+.rj-person-title {
+  color: rgb(255, 255, 255);
+}
+
+.rj-person-btn {
+  font-size: 8px;
+  text-align: right;
+}
+
+.rj-person-btn a{
+  color: rgb(255, 255, 255) !important;
+}
+
+.rj-person-edit label {
+    color: rgb(255, 255, 255) !important;
+}
