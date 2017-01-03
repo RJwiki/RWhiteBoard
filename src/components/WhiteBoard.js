@@ -36,8 +36,8 @@ class WhiteBoard extends Component{
         return (
             <div className="container">
                 <p>
-                    { (config.rowFix < 0 || true) && <button type="button" className="btn btn-default rj-btns" onClick = { addRow }>Add Row</button> }
-                    { (config.columnFix < 0|| true) && <button type="button" className="btn btn-default rj-btns" onClick = { addColumn }>Add Column</button> }
+                    { (config.rowFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addRow }>Add Row</button> }
+                    { (config.columnFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addColumn }>Add Column</button> }
                     <button type="button" className="btn btn-default rj-btns" onClick = { addItemClick }>Add Item</button> 
                 </p>
                 <br />

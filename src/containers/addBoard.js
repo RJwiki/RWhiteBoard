@@ -5,7 +5,11 @@ class addBoard extends Component{
     render(){ 
         return (<div>
             <NavBar />
-            'TO DO'
+            <div className="container">
+                <p>
+                    In Progress
+                </p>
+            </div>
         </div>
         );
     }
