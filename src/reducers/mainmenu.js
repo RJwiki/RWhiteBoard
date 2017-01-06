@@ -25,12 +25,18 @@ export default function mainmenu(state = INITIAL_STATE, action) {
         return Object.assign({}, action.menu)
     }
     if(action.type === SET_BOARD_ITEMS) {
+        let items = [];
+        Object.keys(action.items).forEach(function (itemId) {
+            items.push({ text: action.items[itemId], url: '/boards/' + itemId });
+            
+        }, this)
+
         const newstate =  {
             title: INITIAL_STATE.title,
             items: [
                 INITIAL_STATE.items[0],
                 INITIAL_STATE.items[1],
-                { text: i18n.whiteBoard, url: '/', items: action.items }
+                { text: i18n.whiteBoard, url: '/', items: items }
             ]
         };
         return Object.assign({}, newstate)

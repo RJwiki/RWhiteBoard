@@ -6,6 +6,8 @@ import { Link } from 'react-router'
 
 import i18n from '../i18n'
 import { connect } from 'react-redux'
+import { loadMenu } from '../actions/mainmenu'
+
 
 function getBaseUrl() {
     var re = new RegExp(/^.*\//);
@@ -42,6 +44,7 @@ let NavBar = React.createClass({
             }
             oThis.setState({ disabled: false });
         });
+        loadMenu();
     },
     clickLogin: function() {
         if (!firebase.auth().currentUser) {
