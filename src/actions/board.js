@@ -128,3 +128,9 @@ export function addColumn() {
     const colId = dbControl.createID(currentBoard + PATH_COLUMNS);
     if (colId) dbControl.addItem(currentBoard + PATH_COLUMNS, colId, { name: '' });
 }
+
+
+export function updateContainer(data) {
+    const { containerId } = data;
+    if (containerId) dbControl.updateItem(currentBoard + PATH_CONTAINER, containerId + '/name', data.name);
+}

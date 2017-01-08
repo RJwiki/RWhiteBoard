@@ -8,6 +8,7 @@ import DropDelete from './DropDelete'
 import DragItem from './DragItem'
 import RowHeader from './RowHeader'
 import ColumnHeader from './ColumnHeader'
+import ContainerHeader from './ContainerHeader'
 
 class WhiteBoard extends Component{
 	constructor(){ 
@@ -83,7 +84,7 @@ class WhiteBoard extends Component{
 							<tr>
                                 {
                                     (containers) && Object.keys(containers).map(function (containerId) {
-                                        return <th key={ 'header_' + containerId }>{ containers[containerId].name }</th>;
+                                        return <ContainerHeader key={ 'header_' + containerId } containerId = {containerId} item = {containers[containerId]}></ContainerHeader>;
                                     }, this)
                                 }
 							</tr>

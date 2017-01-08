@@ -8,4 +8,5 @@ export const PATH_CONTAINER = '/containers'
 
 
 export const PATH_BOARDS = '/boards'
+export const PATH_BOARD_LIST = '/boardList'
 export const PATH_BOARD_NAMES = '/boardNames'

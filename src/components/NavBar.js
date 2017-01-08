@@ -5,18 +5,12 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import i18n from '../i18n'
+import { getBaseUrl } from '../utils'
 import { connect } from 'react-redux'
 import { loadMenu } from '../actions/mainmenu'
 
 
-function getBaseUrl() {
-    var re = new RegExp(/^.*\//);
-    return "" + re.exec(window.location.pathname);
-}
-
-let BASE_URL = getBaseUrl();
-if (_.endsWith(BASE_URL, '/')) BASE_URL = BASE_URL.substring(0, BASE_URL.length - 1); //remove ending '/'
-
+const BASE_URL = getBaseUrl(true);
 
 let NavBar = React.createClass({
     getInitialState: function () {

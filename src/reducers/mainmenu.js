@@ -5,16 +5,7 @@ export const INITIAL_STATE = {
     title: i18n.appName,
     items: [
         { text: i18n.home, allowAccessWithoutLogin: true, url: '/' },
-        { text: i18n.addBoard, url: '/addBoard' },
-        { text: i18n.whiteBoard, url: '/', items:[
-                { text: 'チケット', url: '/boards/test1' },
-                { text: '座席表', url: '/boards/test2' },
-                { text: '選考', url: '/boards/test3' }
-                /*{ text: i18n.improvement, url: '/improvement' },
-                { text: i18n.story, url: '/story' },
-                { text: i18n.task, url: '/task' }*/
-            ]  
-        }
+        { text: i18n.addBoard, url: '/addBoard' }
     ]
 };
 

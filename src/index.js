@@ -10,6 +10,7 @@ import _ from 'lodash'
   	
 import reducers from './reducers'
 import board from './containers/board'
+import list from './containers/list'
 import addBoard from './containers/addBoard'
 
 import NavBar from './components/NavBar'
@@ -41,10 +42,10 @@ ReactDOM.render(
 	<Provider store={store}>
 		<div>
 		<Router history={ history }>
-			<Route path={ BASE_URL +  "/" } component={ board } />
+			<Route path={ BASE_URL +  "/" } component={ list } />
 			<Route path={ BASE_URL +  "/addBoard" } component={ addBoard } />
 			<Route path={ BASE_URL +  "/boards/:board" } component={ board } />
-			<Route path="*" component={ board } />
+			<Route path="*" component={ list } />
 		</Router>
 		</div>
 	</Provider>
