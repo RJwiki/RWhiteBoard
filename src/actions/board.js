@@ -190,3 +190,40 @@ export function deleteBoard(boardId) {
         toastr.success(i18n.msg_board_deleted);
     }
 }
+
+export function importTicket(issues, epic, container) {
+    //console.log(issues);
+    //console.log(epic);
+    let updates = {};
+
+    for (let item of issues) {
+        if (!isBlankString(item.key) && item.hidden === false && item.done === false) {
+            let createTicket = true;
+            if (!isBlankString(epic)){
+                if (item.epicField && item.epicField.text && item.epicField.text == epic){
+                    createTicket = true;
+                }else{
+                    createTicket = false;
+                }
+            }
+            if (createTicket) {
+                const itemId = dbControl.createID(currentBoard + PATH_ITEMS);
+                if (itemId && container) {
+
+                    updates[currentBoard + PATH_ITEMS + '/' + itemId] = { 
+                        type: 0,
+                        name: item.summary,
+                        ticketType: isBlankString(item.typeName) ? "improvement" : item.typeName.toLowerCase(),
+                        ticketNum: item.key,
+                        storyPoint: (item && item.estimateStatistic && item.estimateStatistic.statFieldValue && item.estimateStatistic.statFieldValue.value && item.estimateStatistic.statFieldValue.value > 0) ? item.estimateStatistic.statFieldValue.value : null
+                    };
+                    updates[currentBoard + PATH_CONTAINER + '/' + container + '/items/' + itemId] = 1;
+                }
+            }
+        }
+    }
+    //console.log(updates);
+    dbControl.batchUpdateStore(updates);
+    toastr.success(i18n.msg_ticket_imported);
+
+}

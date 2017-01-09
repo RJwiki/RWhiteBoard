@@ -57,7 +57,7 @@ class Person extends Component{
                                     <label>{ i18n.departemt }</label>
                                     <Field name="departemt" component="input" type="text" className="form-control" />
                                 </div>
-                                <p className="rj-person-btn"><a href = "#" onClick = {onOKClick}>OK</a>&nbsp;<a href = "#" onClick = {onCancelClick} >Cancel</a></p>
+                                <p className="rj-person-btn"><a href = "#" onClick = {onOKClick}>OK</a>&nbsp;&nbsp;<a href = "#" onClick = {onCancelClick} >Cancel</a></p>
                             </div>
                              : 
                             <div className="card-block">

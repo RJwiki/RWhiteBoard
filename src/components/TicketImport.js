@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm, submit, change, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import i18n from '../i18n'
-import { createBoard } from '../actions/board'
+import { importTicket } from '../actions/board'
 import { browserHistory, Link } from 'react-router'
 import { IMPORT_TICKET_JSON_URL } from '../constants'
 import { getBaseUrl, isBlankString } from '../utils'
@@ -16,10 +16,27 @@ class TicketImport extends Component{
 	}
 	componentDidMount(){
         const { dispatch } = this.props;
+        
+        dispatch(change('TicketImport', 'epic', "保守"));
 	}
     onImportClick(){
-        const { dispatch, formValue } = this.props;
-
+        const { dispatch, formValue, container } = this.props;
+        if (!isBlankString(formValue.json)){
+            try{
+                let json = JSON.parse(formValue.json);
+                console.log(json);
+                if (_.isArray(json.issues)) {
+                    importTicket(json.issues, formValue.epic, container)
+                }else{
+                    toastr.warning(i18n.msg_invalid_json); 
+                }
+            }catch (exc){
+                toastr.warning(i18n.msg_invalid_json); 
+            }
+        }else{
+            toastr.warning(i18n.msg_invalid_json); 
+        }
+        
     }
 
     render(){ 
@@ -27,45 +44,15 @@ class TicketImport extends Component{
         return (
             <div>
                 <div className="form-group">
-                    <label>{ i18n.name }:</label>
-                    <Field name="name" component="input" type="text" className="form-control" />
+                    <label>{ i18n.epicToImport }:</label>
+                    <Field name="epic" component="input" type="text" className="form-control" />
                 </div>
                 <div className="form-group">
-                    <label>{ i18n.itemType }:</label>
-                    <div>
-                        <label><Field name="type" component="input" type="radio" value="0"/> { i18n.ticket }</label>&nbsp;&nbsp;
-                        <label><Field name="type" component="input" type="radio" value="1"/> { i18n.person }</label>
-                    </div>
+                    <label>{ i18n.jsonToImport }:</label>
+                    <Field name="json" component="textarea" rows="5"  type="text" className="form-control" />
                 </div>
-                <div className="form-group">
-                    <label>{ i18n.row }:</label>
-                    <p><label><Field name="rowShowHeader" component="input" type="checkbox" />{ i18n.showRowHeader }</label></p>
-                    <p><label><Field name="rowFix" component="input" type="checkbox" />{ i18n.fixRow }</label></p>
-                    {(rowFix) && <Field name="rowNum" component="input" type="number" className="form-control" />}
-                </div>
-                <div className="form-group">
-                    <label>{ i18n.column }:</label>
-                    <p><label><Field name="columnShowHeader" component="input" type="checkbox" />{ i18n.showColumnHeader }</label></p>
-                    <p><label><Field name="columnFix" component="input" type="checkbox"/>{ i18n.fixColumn }</label></p>
-                    {(columnFix) && <Field name="columnNum" component="input" type="number" className="form-control" />}
-                </div>
-                <div className="form-group">
-                    <label>{ i18n.numOfExtraContainers }:</label>
-                    <Field name="containerNum" component="input" type="number" className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label>{ i18n.addRowLabel }:</label>
-                    <Field name="addRowLabel" component="input" type="text" className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label>{ i18n.addColumnLabel }:</label>
-                    <Field name="addColumnLabel" component="input" type="text" className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label>{ i18n.addItemLabel }:</label>
-                    <Field name="addItemLabel" component="input" type="text" className="form-control" />
-                </div>
-                <button onClick={ this.onImportClick } className="btn btn-default">{ i18n.add }</button>
+                <button onClick={ this.onImportClick } className="btn btn-default">{ i18n.import }</button>&nbsp;&nbsp;
+                <a href={IMPORT_TICKET_JSON_URL} target="_blank" className="btn btn-default">{ i18n.getJIRAJson }</a>
             </div>
         );
     }
@@ -79,8 +66,6 @@ const selector = formValueSelector('TicketImport')
 
 export default connect(
   state => ({
-       formValue: selector(state, 'name', 'type', 'rowShowHeader', 'rowFix', 'rowNum', 'columnShowHeader', 'columnFix', 'columnNum', 'containerNum', 'addRowLabel', 'addColumnLabel', 'addItemLabel'),
-       rowFix: selector(state, 'rowFix'),
-       columnFix: selector(state, 'columnFix')
+       formValue: selector(state, 'epic', 'json')
     })
 )(TicketImport)

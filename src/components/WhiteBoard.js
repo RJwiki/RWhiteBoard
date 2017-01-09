@@ -9,6 +9,7 @@ import DragItem from './DragItem'
 import RowHeader from './RowHeader'
 import ColumnHeader from './ColumnHeader'
 import ContainerHeader from './ContainerHeader'
+import TicketImport from './TicketImport'
 import { isBlankString } from '../utils'
 import i18n from '../i18n'
 
@@ -113,6 +114,7 @@ class WhiteBoard extends Component{
                 </table>
                 <br />
                 <DropDelete />
+                { (config.type === 0) && <TicketImport container = {config.defaultContainer} /> }
             </div>
         )
     }

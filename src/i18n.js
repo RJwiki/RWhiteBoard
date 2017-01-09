@@ -41,12 +41,17 @@ const i18n = {
     story: 'Story',
     task: 'Task',
     notAssign: 'Not Assigned',
+    epicToImport: 'Epic to Import',
+    jsonToImport: 'Json to Import',
+    getJIRAJson: 'Get JIRA JSON',
     warn_msg_delete: 'Are you sure to delete?',
     warn_msg_name_empty: 'Name is empty!',
     warn_msg_row_num_lessthan1: 'Row Number is empty or less than 1!',
     warn_msg_column_num_lessthan1: 'Column Number is empty or less than 1!',
     msg_board_created: 'A new White Board is created.',
-    msg_board_deleted: 'A White Board is delete.'
+    msg_board_deleted: 'A White Board is delete.',
+    msg_ticket_imported: 'Ticket(s) is imported.',
+    msg_invalid_json: 'Invalid JSON!'
     
 };
 
