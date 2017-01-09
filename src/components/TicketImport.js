@@ -4,71 +4,22 @@ import { connect } from 'react-redux'
 import i18n from '../i18n'
 import { createBoard } from '../actions/board'
 import { browserHistory, Link } from 'react-router'
-
+import { IMPORT_TICKET_JSON_URL } from '../constants'
 import { getBaseUrl, isBlankString } from '../utils'
 
 const BASE_URL = getBaseUrl(true);
 
-class AddBoardForm extends Component{
+class TicketImport extends Component{
     constructor(){ 
 		super(); 
-        this.onAddClick = this.onAddClick.bind(this);
+        this.onImportClick = this.onImportClick.bind(this);
 	}
 	componentDidMount(){
         const { dispatch } = this.props;
 	}
-    onAddClick(){
+    onImportClick(){
         const { dispatch, formValue } = this.props;
-        let data = {
-            type: (formValue.type === "1") ? 1 : 0,
-            rowShowHeader: (formValue.rowShowHeader === true),
-            columnShowHeader: (formValue.columnShowHeader === true),
-            containerNum: (formValue.containerNum && formValue.containerNum > 0) ? formValue.containerNum : 0
-        };
 
-        if (isBlankString(formValue.name)) {
-            toastr.warning(i18n.warn_msg_name_empty); 
-            return;
-        }else {
-            data.name = formValue.name;
-        }
-
-        if (formValue.rowFix){
-            if (formValue.rowNum > 0) {
-                data.rowFix = formValue.rowNum;
-            }else{
-                toastr.warning(i18n.warn_msg_row_num_lessthan1); 
-                return;
-            }
-        }else{
-            data.rowFix = -1;
-        }
-
-        if (formValue.columnFix){
-            if (formValue.columnNum > 0) {
-                data.columnFix = formValue.columnNum;
-            }else{
-                toastr.warning(i18n.warn_msg_column_num_lessthan1); 
-                return;
-            }
-        }else{
-            data.columnFix = -1;
-        }
-
-        if (!isBlankString(formValue.addRowLabel)) {
-            data.addRowLabel = formValue.addRowLabel;
-        }
-        if (!isBlankString(formValue.addColumnLabel)) {
-            data.addColumnLabel = formValue.addColumnLabel;
-        }
-        if (!isBlankString(formValue.addItemLabel)) {
-            data.addItemLabel = formValue.addItemLabel;
-        }
-
-
-        createBoard(data);
-        toastr.success(i18n.msg_board_created);
-        browserHistory.push(BASE_URL + '/');
     }
 
     render(){ 
@@ -114,17 +65,17 @@ class AddBoardForm extends Component{
                     <label>{ i18n.addItemLabel }:</label>
                     <Field name="addItemLabel" component="input" type="text" className="form-control" />
                 </div>
-                <button onClick={ this.onAddClick } className="btn btn-default">{ i18n.add }</button>
+                <button onClick={ this.onImportClick } className="btn btn-default">{ i18n.add }</button>
             </div>
         );
     }
 }
 
-AddBoardForm = reduxForm({
-    form: 'AddBoardForm'
-})(AddBoardForm)
+TicketImport = reduxForm({
+    form: 'TicketImport'
+})(TicketImport)
 
-const selector = formValueSelector('AddBoardForm')
+const selector = formValueSelector('TicketImport')
 
 export default connect(
   state => ({
@@ -132,4 +83,4 @@ export default connect(
        rowFix: selector(state, 'rowFix'),
        columnFix: selector(state, 'columnFix')
     })
-)(AddBoardForm)
+)(TicketImport)

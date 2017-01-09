@@ -9,6 +9,7 @@ export function getBaseUrl(removeEnidngSlash = false) {
 
 
 
-
-
-
+export function isBlankString(s) {
+    if (s && s.trim().length > 0) return false;
+    else return true;
+}

@@ -41,10 +41,10 @@
   },
   "config" : {
     "columnFix" : 4,
-    "columnShowTitle" : true,
+    "columnShowHeader" : true,
     "defaultContainer" : "notAssigned",
     "rowFix" : -1,
-    "rowShowTitle" : true,
+    "rowShowHeader" : true,
     "type" : 0
   },
   "containers" : {

@@ -524,6 +524,11 @@ body {
   font-size: 24px;
 }
 
+.rj-icon-trash{
+  font-size: 50px;
+  text-align: center;
+}
+
 .rj-btns {
     float: left;
     margin-right: 10px;
@@ -565,4 +570,15 @@ body {
 
 .rj-person-edit label {
     color: rgb(255, 255, 255) !important;
+}
+
+.rj-delete {
+  width: 100px;
+}
+
+
+.rj-delete-item {
+  width: 100px;
+  min-height: 10px;
+  text-align: center;
 }

@@ -5,8 +5,8 @@ export const INITIAL_STATE = {
         "type": 0, 
         "rowFix": 0, 
         "columnFix": 0,
-        "rowShowTitle": false,
-        "columnShowTitle": false,
+        "rowShowHeader": false,
+        "columnShowHeader": false,
         "defaultContainer": "notAssigned"
     },
     "rows": {},

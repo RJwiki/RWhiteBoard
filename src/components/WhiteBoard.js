@@ -9,6 +9,8 @@ import DragItem from './DragItem'
 import RowHeader from './RowHeader'
 import ColumnHeader from './ColumnHeader'
 import ContainerHeader from './ContainerHeader'
+import { isBlankString } from '../utils'
+import i18n from '../i18n'
 
 class WhiteBoard extends Component{
 	constructor(){ 
@@ -34,16 +36,16 @@ class WhiteBoard extends Component{
         return (
             <div className="container">
                 <p>
-                    { (config.rowFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addRow }>Add Row</button> }
-                    { (config.columnFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addColumn }>Add Column</button> }
-                    <button type="button" className="btn btn-default rj-btns" onClick = { addItemClick }>Add Item</button> 
+                    { (config.rowFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addRow }>{ isBlankString(config.addRowLabel) ? i18n.addRow : config.addRowLabel }</button> }
+                    { (config.columnFix < 0 ) && <button type="button" className="btn btn-default rj-btns" onClick = { addColumn }>{ isBlankString(config.addColumnLabel) ? i18n.addColumn : config.addColumnLabel }</button> }
+                    <button type="button" className="btn btn-default rj-btns" onClick = { addItemClick }>{ isBlankString(config.addItemLabel) ? i18n.addItem : config.addItemLabel }</button> 
                 </p>
                 <br />
                 <table className="table table-bordered">
 					{
-						(config.columnShowTitle) && <thead>
+						(config.columnShowHeader) && <thead>
 							<tr>
-                                { (config.rowShowTitle) && <th /> }
+                                { (config.rowShowHeader) && <th /> }
                                 {
                                     (columns) && Object.keys(columns).map(function (colId) {
                                         return <ColumnHeader key={ 'header_' + colId } colId = {colId} item = {columns[colId]} ></ColumnHeader>;
@@ -56,7 +58,7 @@ class WhiteBoard extends Component{
                         {
                             (rows) && Object.keys(rows).map(function (rowId) {
                                 return (<tr key={ 'row_' + rowId } className="rj-droppable-tr">
-                                            { (config.rowShowTitle) && <RowHeader rowId = {rowId} item = {rows[rowId]}></RowHeader> }
+                                            { (config.rowShowHeader) && <RowHeader rowId = {rowId} item = {rows[rowId]}></RowHeader> }
                                             {
                                                 (columns) && Object.keys(columns).map(function (colId) {
                                                     return (

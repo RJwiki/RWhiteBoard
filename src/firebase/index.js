@@ -17,6 +17,14 @@ export const dbControl = {
         updates[path] = item;
         return Db.ref().update(updates);
     },
+    //items - key: path, value: item's value
+    batchUpdateStore: function(updates) {
+        //let updates = {};
+        //updates[path] = item;
+        console.log('batchUpdateStore');
+        console.log(updates);
+        return Db.ref().update(updates);
+    },
     deleteStore: function(path) {
         return Db.ref(path).remove();
     },

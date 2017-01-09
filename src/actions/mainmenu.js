@@ -26,6 +26,7 @@ function loadMenuSuccess(snapshot){
 
  
 function showError(error){ 
+  toastr.error(error.message); 
   return { 
     type: ERROR, 
     message: error.message 

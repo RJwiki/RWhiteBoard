@@ -3,8 +3,11 @@
         "type": 0, //0 - Ticket , 1 - Person (may support custom, in "config")
         "rowFix": 0,  // Fixed row number, -1 (less than 0) not fixed
         "columnFix": 0, // Fixed column number, -1 (less than 0) not fixed
-        "rowShowTitle": true,
-        "columnShowTitle": true,
+        "rowShowHeader": true,
+        "columnShowHeader": true,
+        "addRowLabel": "Add Row", 
+        "addColumnLabel": "Add Column", 
+        "addItemLabel": "Add Item", 
         "defaultContainer": "notAssigned" //Item will add to this container in default
     },
     "rows": {

@@ -7639,8 +7639,8 @@
 	        "type": 0,
 	        "rowFix": 0,
 	        "columnFix": 0,
-	        "rowShowTitle": false,
-	        "columnShowTitle": false,
+	        "rowShowHeader": false,
+	        "columnShowHeader": false,
 	        "defaultContainer": "notAssigned"
 	    },
 	    "rows": {},
@@ -18910,13 +18910,13 @@
 	                _react2.default.createElement(
 	                    'table',
 	                    { className: 'table table-bordered' },
-	                    config.columnShowTitle && _react2.default.createElement(
+	                    config.columnShowHeader && _react2.default.createElement(
 	                        'thead',
 	                        null,
 	                        _react2.default.createElement(
 	                            'tr',
 	                            null,
-	                            config.rowShowTitle && _react2.default.createElement('th', null),
+	                            config.rowShowHeader && _react2.default.createElement('th', null),
 	                            columns && Object.keys(columns).map(function (colId) {
 	                                return _react2.default.createElement(_ColumnHeader2.default, { key: 'header_' + colId, colId: colId, item: columns[colId] });
 	                            }, this)
@@ -18929,7 +18929,7 @@
 	                            return _react2.default.createElement(
 	                                'tr',
 	                                { key: 'row_' + rowId, className: 'rj-droppable-tr' },
-	                                config.rowShowTitle && _react2.default.createElement(_RowHeader2.default, { rowId: rowId, item: rows[rowId] }),
+	                                config.rowShowHeader && _react2.default.createElement(_RowHeader2.default, { rowId: rowId, item: rows[rowId] }),
 	                                columns && Object.keys(columns).map(function (colId) {
 	                                    return _react2.default.createElement(
 	                                        _DropCell2.default,

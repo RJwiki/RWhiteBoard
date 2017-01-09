@@ -2,7 +2,7 @@
 Nav Bar Component
 */
 import React from 'react'
-import { Link } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 
 import i18n from '../i18n'
 import { getBaseUrl } from '../utils'
@@ -47,7 +47,7 @@ let NavBar = React.createClass({
             firebase.auth().signInWithRedirect(provider);
         } else {
             firebase.auth().signOut();
-            window.location.href = BASE_URL + '/#'; 
+            browserHistory.push(BASE_URL + '/');
         }
         this.setState({ disabled: true });
     },

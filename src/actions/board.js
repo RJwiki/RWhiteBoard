@@ -3,7 +3,9 @@
  */
 
 import { Db, dbControl } from '../firebase/'
-import { PATH_ROOT, PATH_CONFIG, PATH_ROWS, PATH_COLUMNS, PATH_ITEMS, PATH_BOARD, PATH_CONTAINER, PATH_BOARDS } from '../firebase/path'
+import { PATH_ROOT, PATH_BOARD_LIST, PATH_CONFIG, PATH_ROWS, PATH_COLUMNS, PATH_ITEMS, PATH_BOARD, PATH_CONTAINER, PATH_BOARDS } from '../firebase/path'
+import i18n from '../i18n'
+import { isBlankString } from '../utils'
 
 export const SET_BOARD = 'BRD_SET_BOARD'
 export const SET_MOVE_ITEM = 'BRD_MOVE_ITEM'
@@ -48,6 +50,7 @@ function loadBoardSuccess(snapshot){
 
  
 function showError(error){ 
+  toastr.error(error.message); 
   return { 
     type: ERROR, 
     message: error.message 
@@ -133,4 +136,57 @@ export function addColumn() {
 export function updateContainer(data) {
     const { containerId } = data;
     if (containerId) dbControl.updateItem(currentBoard + PATH_CONTAINER, containerId + '/name', data.name);
+}
+
+
+export function createBoard(data) {
+    if (data.name) {
+        const notAssignContainerId = "-Ka0_notAssigned";
+        data.defaultContainer = notAssignContainerId;
+        const boardId = dbControl.createID(PATH_BOARDS);
+        const NEW_BOARD_PATH = PATH_BOARDS + '/' + boardId;
+
+        let updates = {};
+        updates[NEW_BOARD_PATH] = { config: data }
+        updates[PATH_BOARD_LIST + '/' + boardId] = data.name;
+
+        dbControl.batchUpdateStore(updates);
+        updates = {};
+        updates[NEW_BOARD_PATH + PATH_CONTAINER + '/' + notAssignContainerId] = { name: i18n.notAssign }
+
+        if (data.columnFix && data.columnFix > 0) {
+            for (var i = 0; i < data.columnFix; ++i) {
+                const colId = dbControl.createID(NEW_BOARD_PATH + PATH_COLUMNS);
+                updates[NEW_BOARD_PATH + PATH_COLUMNS + '/' + colId] = { name: '' }
+            }
+        }
+        if (data.rowFix && data.rowFix > 0) {
+            for (var i = 0; i < data.rowFix; ++i) {
+                const rowId = dbControl.createID(NEW_BOARD_PATH + PATH_ROWS);
+                updates[NEW_BOARD_PATH + PATH_ROWS + '/' + rowId] = { name: '' }
+            }
+        }
+
+        if (data && data.containerNum > 0) {
+            for (var i = 0; i < data.containerNum; ++i) {
+                const containerId = dbControl.createID(NEW_BOARD_PATH + PATH_CONTAINER);
+                updates[NEW_BOARD_PATH + PATH_CONTAINER + '/' + containerId] = { name: '' }
+            }
+        }
+        dbControl.batchUpdateStore(updates);
+        toastr.success(i18n.msg_board_created); 
+    }
+}
+
+
+
+export function deleteBoard(boardId) {
+    if (!isBlankString(boardId)) {
+        let updates = {};
+        updates[PATH_BOARDS + '/' + boardId] = null;
+        updates[PATH_BOARD_LIST + '/' + boardId] = null;
+
+        dbControl.batchUpdateStore(updates);
+        toastr.success(i18n.msg_board_deleted);
+    }
 }

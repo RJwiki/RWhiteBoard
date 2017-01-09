@@ -17,7 +17,7 @@ class DropDelete extends Component{
         const { container, children } = this.props; 
         const onDrop = this.onDrop;
         return (
-                <table className="table table-bordered">
+                <table className="table table-bordered rj-delete">
 					{
 						<thead>
 							<tr>
@@ -27,7 +27,7 @@ class DropDelete extends Component{
 					}
                     <tbody>
                         <tr className="rj-droppable-tr">
-                            <td className="rj-droppable-td"><Droppable className="rj-droppable" types={['ticket']} onDrop={ onDrop } ></Droppable></td>
+                            <td className="rj-droppable-td"><Droppable className="rj-droppable rj-delete-item" types={['ticket']} onDrop={ onDrop } ><span className="glyphicon glyphicon-trash rj-icon-trash" /></Droppable></td>
                         </tr>
                     </tbody>
                 </table>
