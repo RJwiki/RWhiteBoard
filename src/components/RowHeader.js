@@ -47,7 +47,7 @@ class RowHeader extends Component{
 								<Field name="name" component="input" type="text" className="form-control" />
 							</div>
 							<div className="form-group">
-								<label>{ i18n.hours }</label>
+								<label>{ i18n.storyPoint }</label>
 								<Field name="hours" component="input" type="number" className="form-control" />
 							</div>
 							<p className="rj-row-header-btn"><a href = "#" onClick = {onOKClick}>OK</a>&nbsp;&nbsp;<a href = "#" onClick = {onCancelClick} >Cancel</a></p>
@@ -56,7 +56,7 @@ class RowHeader extends Component{
 						<div className="rj-row-header">                    
                             
 							{ (item.name) && <p className="rj-row-header-title"><span className="glyphicon glyphicon-user rj-icon-user" />&nbsp;&nbsp;{ item.name }</p> }
-							{ (item.hours) && <p className="rj-row-header-text">{ item.hours } hours</p> }
+							{ (item.hours) && <p className="rj-row-header-text">{ item.hours } Story Points</p> }
 							<p className="rj-row-header-btn"><a href = "#" onClick = {onEditClick}>Edit</a></p>
 						</div>
                 }

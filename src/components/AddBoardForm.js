@@ -16,6 +16,9 @@ class AddBoardForm extends Component{
 	}
 	componentDidMount(){
         const { dispatch } = this.props;
+        dispatch(change('AddBoardForm', 'type', "0"));
+        dispatch(change('AddBoardForm', 'rowShowHeader', true));
+        dispatch(change('AddBoardForm', 'columnShowHeader', true));
 	}
     onAddClick(){
         const { dispatch, formValue } = this.props;
